@@ -1,11 +1,11 @@
 Summary:	GObject Plugin System
 Name:		libpeas
-Version:	1.6.1
+Version:	1.6.2
 Release:	1
 License:	LGPL v2
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/libpeas/1.6/%{name}-%{version}.tar.xz
-# Source0-md5:	773dee6611735f26872fb94cc024352b
+# Source0-md5:	183db6b32051a73c3b7bfbfccdc88e4c
 URL:		http://live.gnome.org/Libpeas
 BuildRequires:	autoconf
 BuildRequires:	automake
