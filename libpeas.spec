@@ -1,11 +1,11 @@
 Summary:	GObject Plugin System
 Name:		libpeas
-Version:	1.6.2
+Version:	1.8.0
 Release:	1
 License:	LGPL v2
 Group:		Libraries
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/libpeas/1.6/%{name}-%{version}.tar.xz
-# Source0-md5:	183db6b32051a73c3b7bfbfccdc88e4c
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/libpeas/1.8/%{name}-%{version}.tar.xz
+# Source0-md5:	31ac6d2341d7a358d48808a547ab8660
 URL:		http://live.gnome.org/Libpeas
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -18,6 +18,7 @@ BuildRequires:	intltool
 BuildRequires:	libtool
 BuildRequires:	python
 BuildRequires:	python-pygobject3-devel
+BuildRequires:	python3-devel
 #BuildRequires:	seed-devel
 BuildRequires:	vala
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -38,6 +39,14 @@ Requires:	%{name} = %{version}-%{release}
 
 %description loader-python
 Python loader for libpeas library.
+
+%package loader-python3
+Summary:	Python3 loader for libpeas library
+Group:		Libraries
+Requires:	%{name} = %{version}-%{release}
+
+%description loader-python3
+Python3 loader for libpeas library.
 
 %package loader-seed
 Summary:	JavaScript (seed) loader for libpeas library
@@ -158,6 +167,10 @@ rm -rf $RPM_BUILD_ROOT
 %files loader-python
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libpeas-1.0/loaders/libpythonloader.so
+
+%files loader-python3
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/libpeas-1.0/loaders/libpython3loader.so
 
 %if 0
 %files loader-seed
