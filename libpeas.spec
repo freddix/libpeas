@@ -1,23 +1,23 @@
 Summary:	GObject Plugin System
 Name:		libpeas
-Version:	1.8.1
+Version:	1.9.0
 Release:	1
 License:	LGPL v2
 Group:		Libraries
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/libpeas/1.8/%{name}-%{version}.tar.xz
-# Source0-md5:	f63d49ab7f72e1ab9eb398c1f0750790
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/libpeas/1.9/%{name}-%{version}.tar.xz
+# Source0-md5:	54e7c7e80fd8737ffc0987fd09d1267a
 URL:		http://live.gnome.org/Libpeas
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gettext-devel
 BuildRequires:	gjs-devel
-BuildRequires:	gobject-introspection-devel
-BuildRequires:	gtk+3-devel
+BuildRequires:	gobject-introspection-devel >= 1.38.0
+BuildRequires:	gtk+3-devel >= 3.10.0
 BuildRequires:	gtk-doc
 BuildRequires:	intltool
 BuildRequires:	libtool
 BuildRequires:	python
-BuildRequires:	python-pygobject3-devel
+BuildRequires:	python-pygobject3-devel >= 3.10.0
 BuildRequires:	python3-devel
 #BuildRequires:	seed-devel
 BuildRequires:	vala
