@@ -1,26 +1,27 @@
 Summary:	GObject Plugin System
 Name:		libpeas
-Version:	1.9.0
+Version:	1.10.0
 Release:	1
 License:	LGPL v2
 Group:		Libraries
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/libpeas/1.9/%{name}-%{version}.tar.xz
-# Source0-md5:	54e7c7e80fd8737ffc0987fd09d1267a
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/libpeas/1.10/%{name}-%{version}.tar.xz
+# Source0-md5:	b388cdb1c38ac8701f85c8278df0de0a
 URL:		http://live.gnome.org/Libpeas
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gettext-devel
 BuildRequires:	gjs-devel
-BuildRequires:	gobject-introspection-devel >= 1.38.0
-BuildRequires:	gtk+3-devel >= 3.10.0
+BuildRequires:	gobject-introspection-devel >= 1.40.0
+BuildRequires:	gtk+3-devel >= 3.12.0
 BuildRequires:	gtk-doc
 BuildRequires:	intltool
 BuildRequires:	libtool
 BuildRequires:	python
-BuildRequires:	python-pygobject3-devel >= 3.10.0
+BuildRequires:	python-pygobject3-devel >= 3.12.0
 BuildRequires:	python3-devel
 #BuildRequires:	seed-devel
 BuildRequires:	vala
+Obsoletes:	libpeas-loader-gjs
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -47,22 +48,6 @@ Requires:	%{name} = %{version}-%{release}
 
 %description loader-python3
 Python3 loader for libpeas library.
-
-%package loader-seed
-Summary:	JavaScript (seed) loader for libpeas library
-Group:		Libraries
-Requires:	%{name} = %{version}-%{release}
-
-%description loader-seed
-JavaScript (seed) loader for libpeas library.
-
-%package loader-gjs
-Summary:	JavaScript (GJS) loader for libpeas library
-Group:		Libraries
-Requires:	%{name} = %{version}-%{release}
-
-%description loader-gjs
-JavaScript (GJS) loader for libpeas library.
 
 %package devel
 Summary:	Header files for libpeas library
@@ -137,7 +122,7 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-%{__rm} $RPM_BUILD_ROOT%{_libdir}/*/*/*.la
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/{,*/*/}*.la
 
 %find_lang libpeas
 
@@ -171,16 +156,6 @@ rm -rf $RPM_BUILD_ROOT
 %files loader-python3
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libpeas-1.0/loaders/libpython3loader.so
-
-%if 0
-%files loader-seed
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libpeas-1.0/loaders/libseedloader.so
-%endif
-
-%files loader-gjs
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libpeas-1.0/loaders/libgjsloader.so
 
 %files devel
 %defattr(644,root,root,755)
