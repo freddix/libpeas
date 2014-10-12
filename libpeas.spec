@@ -1,23 +1,23 @@
 Summary:	GObject Plugin System
 Name:		libpeas
-Version:	1.10.0
+Version:	1.12.1
 Release:	1
 License:	LGPL v2
 Group:		Libraries
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/libpeas/1.10/%{name}-%{version}.tar.xz
-# Source0-md5:	b388cdb1c38ac8701f85c8278df0de0a
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/libpeas/1.12/%{name}-%{version}.tar.xz
+# Source0-md5:	2bd146e4cb2335843c6145f81e0a8d0e
 URL:		http://live.gnome.org/Libpeas
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gettext-devel
 BuildRequires:	gjs-devel
-BuildRequires:	gobject-introspection-devel >= 1.40.0
-BuildRequires:	gtk+3-devel >= 3.12.0
+BuildRequires:	gobject-introspection-devel >= 1.42.0
+BuildRequires:	gtk+3-devel >= 3.14.0
 BuildRequires:	gtk-doc
 BuildRequires:	intltool
 BuildRequires:	libtool
 BuildRequires:	python
-BuildRequires:	python-pygobject3-devel >= 3.12.0
+BuildRequires:	python-pygobject3-devel >= 3.14.0
 BuildRequires:	python3-devel
 #BuildRequires:	seed-devel
 BuildRequires:	vala
@@ -94,13 +94,13 @@ API and internal documentation for libpeas library.
 %setup -q
 
 # kill gnome common deps
-sed -i -e 's/GNOME_COMPILE_WARNINGS.*//g'	\
+%{__sed} -i -e 's/GNOME_COMPILE_WARNINGS.*//g'	\
     -i -e 's/GNOME_MAINTAINER_MODE_DEFINES//g'	\
     -i -e 's/GNOME_COMMON_INIT//g'		\
     -i -e 's/GNOME_CXX_WARNINGS.*//g'		\
     -i -e 's/GNOME_DEBUG_CHECK//g' configure.ac
 
-sed -i 's/peas-demo//' Makefile.am
+%{__sed} -i 's/peas-demo//' Makefile.am
 
 %build
 %{__libtoolize}
@@ -112,7 +112,6 @@ sed -i 's/peas-demo//' Makefile.am
 	--disable-seed		\
 	--disable-silent-rules	\
 	--disable-static	\
-	--enable-vala		\
 	--with-html-dir=%{_gtkdocdir}
 %{__make}
 
